@@ -37,7 +37,6 @@ namespace FluentFTP.Helpers {
 				return "/";
 			}
 
-			path = path.Replace('\\', '/');
 			path = Regex.Replace(path, "[/]+", "/");
 			path = path.TrimEnd('/');
 
@@ -65,11 +64,11 @@ namespace FluentFTP.Helpers {
 						path += "/";
 					}
 
-					path += Regex.Replace(part.Replace('\\', '/'), "[/]+", "/").TrimEnd('/');
+					path += Regex.Replace(part, "[/]+", "/").TrimEnd('/');
 				}
 			}
 
-			path = Regex.Replace(path.Replace('\\', '/'), "[/]+", "/").TrimEnd('/');
+			path = Regex.Replace(path, "[/]+", "/").TrimEnd('/');
 			if (path.Length == 0) {
 				path = "/";
 			}
