@@ -210,16 +210,14 @@ namespace FluentFTP {
 					Noop(true);
 					remoteClient.Noop(true);
 
-					ftpFxpSession.Dispose();
-
 					return true;
-
 				}
-
 				// Fix: catch all exceptions and dispose off the FTP clients if one occurs
-				catch {
-					ftpFxpSession.Dispose();
+				catch {					
 					throw;
+				}
+				finally {
+					ftpFxpSession.Dispose();
 				}
 			}
 			else {
@@ -227,7 +225,5 @@ namespace FluentFTP {
 				return false;
 			}
 		}
-
-
 	}
 }

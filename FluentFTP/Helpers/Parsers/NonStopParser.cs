@@ -55,9 +55,6 @@ namespace FluentFTP.Helpers.Parsers {
 			// parse owner and permissions
 			var owner = values[5] + values[6];
 			var permissions = "";
-			if (values.Length > 7) {
-				values[7].Trim(TrimValues);
-			}
 
 			// create a new list item object with the parsed metadata
 			var file = new FtpListItem(record, name, size, isDir, lastModified);
