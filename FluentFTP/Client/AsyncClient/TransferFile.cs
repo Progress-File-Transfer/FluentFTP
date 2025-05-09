@@ -211,24 +211,20 @@ namespace FluentFTP {
 					await Noop(true, token);
 					await remoteClient.Noop(true, token);
 
-					ftpFxpSession.Dispose();
-
 					return true;
-
 				}
-
 				// Fix: catch all exceptions and dispose off the FTP clients if one occurs
-				catch {
-					ftpFxpSession.Dispose();
+				catch {					
 					throw;
+				}
+				finally {
+					ftpFxpSession.Dispose();
 				}
 			}
 			else {
 				LogWithPrefix(FtpTraceLevel.Error, "Failed to open FXP passive Connection");
 				return false;
 			}
-
 		}
-
 	}
 }
